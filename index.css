@@ -1,0 +1,156 @@
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   background-color: #F3F5FC;
+   font-family: 'Poppins', sans-serif;
+}
+
+.gral-cont {
+   display: flex;
+   flex-direction: column;
+   justify-items: center;
+   align-items: center;
+}
+
+.logo {
+   margin-left: 50px;
+}
+
+.title {
+   font-size: 40px;
+   text-align: center;
+   color: #0A3871;
+}
+
+.ahorcado1 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado2 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado3 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado4 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado5 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado6 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.ahorcado7 {
+   width: 325px;
+   height: 415px;
+   display: none;
+}
+
+.palabra-escondida {
+   font-size: 44px;
+   color: #0A3871;
+}
+
+.letras-cont {
+   font-size: 40px;
+   color: #0A3871;
+}
+
+.buttons {
+   margin-top: 500px;
+}
+
+.resultado {
+   font-size: 40px;
+   color: #0A3871;
+}
+
+.errores {}
+
+.main-buttons-cont {
+   width: 200px;
+}
+
+.start-button {
+   width: 100%;
+   padding: 20px 10px;
+   border-radius: 24px;
+   margin-bottom: 30px;
+   background-color: #0A3871;
+   border: none;
+   color: white;
+   cursor: pointer;
+}
+
+.restart-button {
+   display: none;
+   width: 100%;
+   padding: 20px 10px;
+   border-radius: 24px;
+   margin-bottom: 30px;
+   background-color: #0A3871;
+   border: none;
+   color: white;
+   cursor: pointer;
+}
+
+
+.add-word-button {
+   width: 100%;
+   padding: 20px 10px;
+   border-radius: 24px;
+   border: solid 1px #0A3871;
+   background-color: white;
+   color: #0A3871;
+   cursor: pointer;
+}
+
+.desistir-button {
+   display: none;
+   width: 100%;
+   padding: 20px 10px;
+   border-radius: 24px;
+   border: solid 1px #0A3871;
+   background-color: white;
+   color: #0A3871;
+   cursor: pointer;
+}
+
+.form-cont {
+   display: none;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+   top: 0%;
+   left: 0%;
+   background-color: #0A3871;
+   color: #F3F5FC;
+}
+
+.cancel-button {
+   cursor: pointer;
+
+}
