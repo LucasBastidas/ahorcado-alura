@@ -467,6 +467,11 @@ letraM.addEventListener("click", (e) => {
 	document.dispatchEvent(presionarTecla);
 });
 
+letraN.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "n" });
+	document.dispatchEvent(presionarTecla);
+});
+
 letraÑ.addEventListener("click", (e) => {
 	let presionarTecla = new KeyboardEvent("keypress", { key: "ñ" });
 	document.dispatchEvent(presionarTecla);
