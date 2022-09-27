@@ -27,6 +27,7 @@ header {
 
 .button-teclado {
    font-size: 50px;
+   cursor: pointer;
 }
 
 .button-teclado p {
@@ -208,4 +209,5 @@ header {
    height: 25px;
    border: solid 1px #0A3871;
    color: #0A3871;
+   cursor: pointer;
 }
