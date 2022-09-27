@@ -51,6 +51,7 @@ desistirButton.addEventListener("click", () => {
 		palabraSecreta.toUpperCase();
 	juegoIniciado = false;
 	barritas.style.display = "none";
+	palabraEscondida.style.display = "none";
 	restartButton.textContent = "Volver a jugar";
 	restartButton.style.display = "block";
 	desistirButton.style.display = "none";
@@ -77,7 +78,7 @@ function mostrarPalabraSecreta(palabra) {
 	palabraCompleta = palabra;
 	const letras = palabra.split("");
 	letrasDivididas = letras;
-	console.log(letras);
+	// console.log(letras);
 	var palabraSecreta = [];
 	for (let index = 0; index < letras.length; index++) {
 		palabraSecreta.push("_");
@@ -94,34 +95,34 @@ function crearPalabraVacía(array) {
 	for (let index = 0; index < array.length; index++) {
 		palabraArray.push("_");
 	}
-	console.log(palabraArray);
+	// console.log(palabraArray);
 }
 
-//FUNCION CAMBIAR LETRA
+//FUNCION CAMBIAR LETRA: va mostrando las letras que se van acertando
 function completarLetras(positions, letra) {
 	if (positions.length > 1) {
 		var palabraNueva = palabraArray;
-		console.log("hay mas de 1 ");
-		console.log("holaaa");
+		// console.log("hay mas de 1 ");
 		for (var i = 0; i < palabraArray.length; i++) {
 			for (var j = 0; j < positions.length; j++) {
 				if (i == positions[j]) {
-					palabraNueva[i] = letra;
+					palabraNueva[i] = letra.toUpperCase();
 				}
 			}
 			palabraEscondida.textContent = palabraNueva.join("   ");
 			barritas.style.display = "none";
 		}
 	} else {
-		console.log("hay 1");
-		palabraArray[positions[0]] = letra;
+		// console.log("hay 1");
+		palabraArray[positions[0]] = letra.toUpperCase();
 		palabraEscondida.textContent = palabraArray.join("    ");
 		barritas.style.display = "none";
 	}
 }
 
+//COMPRUEBA SI LA LETRA ESTA EN LA PALABRA Y UTILIZA LA FUNCION PARA SABER SI ESTA EN EL ARRAY ERRORES
 function comprobarLetra(letra) {
-	console.log("tu letra", letra);
+	// console.log("tu letra", letra);
 	var respuesta = "";
 	var posicion = [];
 
@@ -132,7 +133,7 @@ function comprobarLetra(letra) {
 		}
 	}
 	if (respuesta == "esta") {
-		console.log(posicion);
+		// console.log(posicion);
 		completarLetras(posicion, letra);
 		if (comprobarVictoria()) {
 			juegoIniciado = false;
@@ -143,7 +144,7 @@ function comprobarLetra(letra) {
 		}
 	} else {
 		if (comprobarSiEstaEnError(letra)) {
-			console.log("YA PROBASTE ESA LETRA");
+			// console.log("YA PROBASTE ESA LETRA");
 		} else {
 			errores.push(letra);
 			if (errores.length == 6) {
@@ -160,12 +161,13 @@ function comprobarLetra(letra) {
 			} else {
 				erroresContador.textContent = ("errores:", errores);
 				elegirImagenAhorcado();
-				console.log(palabraSecreta);
+				// console.log(palabraSecreta);
 			}
 		}
 	}
 }
 
+//COMPRUEBA SI LA LETRA YA ESTA EN LOS ERRORES
 function comprobarSiEstaEnError(letra) {
 	for (let i = 0; i < errores.length; i++) {
 		if (errores[i] == letra) {
@@ -177,11 +179,46 @@ function comprobarSiEstaEnError(letra) {
 	}
 }
 
+const letrasPermitidas = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i",
+	"j",
+	"k",
+	"l",
+	"m",
+	"n",
+	"ñ",
+	"o",
+	"p",
+	"q",
+	"r",
+	"s",
+	"t",
+	"u",
+	"v",
+	"w",
+	"x",
+	"y",
+	"z",
+];
+
 (function index() {
 	document.addEventListener("keypress", (e) => {
 		if (juegoIniciado) {
-			const letraPresionada = e.key.toLowerCase();
-			comprobarLetra(letraPresionada);
+			const key = e.key;
+			if (letrasPermitidas.includes(key.toLowerCase())) {
+				const letraPresionada = e.key.toLowerCase();
+				comprobarLetra(letraPresionada);
+			} else {
+				alert("Caracter no permitido");
+			}
 		}
 	});
 	if (errores.length == 2) {
@@ -317,3 +354,185 @@ function comprobarVictoria() {
 	}
 	return ganaste;
 }
+
+//TECLADO EN PANTALLA
+var keyboardOn = false;
+const keyboard = document.querySelector(".teclado-gral");
+const buttonOpenKeyboard = document.querySelector(".button-teclado");
+
+buttonOpenKeyboard.addEventListener("click", () => {
+	if (juegoIniciado) {
+		if (keyboardOn == false) {
+			keyboard.style.display = "flex";
+			keyboardOn = true;
+		} else {
+			keyboard.style.display = "none";
+			keyboardOn = false;
+		}
+	} else {
+		alert("Primero inicia el juego para activar el teclado virtual");
+	}
+});
+
+const letraA = document.querySelector(".A");
+const letraB = document.querySelector(".B");
+const letraC = document.querySelector(".C");
+const letraD = document.querySelector(".D");
+const letraE = document.querySelector(".E");
+const letraF = document.querySelector(".F");
+const letraG = document.querySelector(".G");
+const letraH = document.querySelector(".H");
+const letraI = document.querySelector(".I");
+const letraJ = document.querySelector(".J");
+const letraK = document.querySelector(".K");
+const letraL = document.querySelector(".L");
+const letraM = document.querySelector(".M");
+const letraN = document.querySelector(".N");
+const letraÑ = document.querySelector(".Ñ");
+const letraO = document.querySelector(".O");
+const letraP = document.querySelector(".P");
+const letraQ = document.querySelector(".Q");
+const letraR = document.querySelector(".R");
+const letraS = document.querySelector(".S");
+const letraT = document.querySelector(".T");
+const letraU = document.querySelector(".U");
+const letraV = document.querySelector(".V");
+const letraW = document.querySelector(".W");
+const letraX = document.querySelector(".X");
+const letraY = document.querySelector(".Y");
+const letraZ = document.querySelector(".Z");
+
+letraA.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "a" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraB.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "b" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraC.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "c" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraD.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "d" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraE.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "e" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraF.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "f" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraG.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "g" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraH.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "h" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraI.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "i" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraJ.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "j" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraK.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "k" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraL.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "l" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraM.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "m" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraÑ.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "ñ" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraO.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "o" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraP.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "p" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraQ.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "q" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraR.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "r" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraS.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "s" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraT.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "t" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraU.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "u" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraV.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "v" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraW.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "w" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraX.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "x" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraY.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "y" });
+	document.dispatchEvent(presionarTecla);
+});
+
+letraZ.addEventListener("click", (e) => {
+	let presionarTecla = new KeyboardEvent("keypress", { key: "z" });
+	document.dispatchEvent(presionarTecla);
+});
+
+// letraM.addEventListener("click", (e) => {
+// 	let presionarTecla = new KeyboardEvent("keypress", { key: "m" });
+// 	document.dispatchEvent(presionarTecla);
+// });

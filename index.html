@@ -15,7 +15,10 @@
 
 <body>
    <header>
-      <img class="logo" src="./assets/LogoAlura.png" alt="">
+      <div><img class="logo" src="./assets/LogoAlura.png" alt=""></div>
+      <div class="button-teclado">
+         <p>⌨</p>
+      </div>
    </header>
    <main class="gral-cont">
       <h1 class="title">AHORCADO! 😯</h1>
@@ -32,6 +35,42 @@
       <section class="resultado"></section>
       <section class="letras-cont"></section>
       <section class="errores"></section>
+      <!-- teclado en pantalla -->
+      <div class="teclado-gral">
+         <div class="teclado-fila-1">
+            <div class="letra A">A</div>
+            <div class="letra B">B</div>
+            <div class="letra C">C</div>
+            <div class="letra D">D</div>
+            <div class="letra E">E</div>
+            <div class="letra F">F</div>
+            <div class="letra G">G</div>
+            <div class="letra H">H</div>
+            <div class="letra I">I</div>
+            <div class="letra J">J</div>
+         </div>
+         <div class="teclado-fila-2">
+            <div class="letra K">K</div>
+            <div class="letra L">L</div>
+            <div class="letra M">M</div>
+            <div class="letra N">N</div>
+            <div class="letra Ñ">Ñ</div>
+            <div class="letra O">O</div>
+            <div class="letra P">P</div>
+            <div class="letra Q">Q</div>
+            <div class="letra R">R</div>
+            <div class="letra S">S</div>
+         </div>
+         <div class="teclado-fila-3">
+            <div class="letra T">T</div>
+            <div class="letra U">U</div>
+            <div class="letra V">V</div>
+            <div class="letra W">W</div>
+            <div class="letra X">X</div>
+            <div class="letra Y">Y</div>
+            <div class="letra Z">Z</div>
+         </div>
+      </div>
       <section class="buttons">
          <div class="main-buttons-cont">
             <button class="start-button">Iniciar Juego</button>
@@ -47,10 +86,11 @@
          </div>
       </section>
    </main>
+
    <div class="form-cont">
       <form class="form">
          <input name="word" type="text">
-         <div><button>agregar</button></div>
+         <div><button class="add-button">agregar</button></div>
          <div class="cancel-button">Cancelar</div>
       </form>
    </div>
